@@ -275,7 +275,7 @@ type Bus = {
   characteristics: string;
   plate: string;
   model?: string;
-  busBrand: string;
+  busBrandName: string;
   status: number;
 };
 
@@ -468,11 +468,10 @@ function SearchBus() {
           }}
         >
           <h4 style={{ marginBottom: 8 }}>🚌 Bus encontrado</h4>
-          <p><b>ID:</b> {bus.id}</p>
           <p><b>N° Bus:</b> {bus.busNumber}</p>
           <p><b>Características:</b> {bus.characteristics}</p>
           <p><b>Placa:</b> {bus.plate}</p>
-          <p><b>Marca:</b> {bus.busBrand}</p>
+          <p><b>Marca:</b> {bus.busBrandName}</p>
           <p>
             <b>Estado:</b>{" "}
             <span
