@@ -3,6 +3,7 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 export default function App() {
   const location = useLocation();
   const isAuthPage = ["/login", "/register"].includes(location.pathname);
+  const logout = () => { localStorage.removeItem("token"); nav("/login", {replace:true}); };
 
   return (
     <div
@@ -29,18 +30,7 @@ export default function App() {
 
         {!isAuthPage && (
           <nav style={{ display: "flex", gap: "16px" }}>
-            <Link style={{ color: "#fff", textDecoration: "none" }} to="/">
-              Home
-            </Link>
-            <Link style={{ color: "#fff", textDecoration: "none" }} to="/login">
-              Login
-            </Link>
-            <Link
-              style={{ color: "#fff", textDecoration: "none" }}
-              to="/register"
-            >
-              Register
-            </Link>
+            <button onClick={logout}>Cerrar Sesión</button>
           </nav>
         )}
       </header>

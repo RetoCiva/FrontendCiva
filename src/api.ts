@@ -17,7 +17,6 @@ function normalizeBus(raw: any): Bus {
 }
 
 export const api = {
-  // ===== AUTH =====
   async signUp(body: SignUpRequest) {
     const res = await fetch(`${BASE}/authentication/sign-up`, {
       method: "POST",
