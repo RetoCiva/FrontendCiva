@@ -362,7 +362,7 @@ function BusesTable() {
               <td style={{ padding: 10 }}>{bus.characteristics}</td>
               <td style={{ padding: 10 }}>{bus.plate}</td>
               <td style={{ padding: 10 }}>{bus.model ?? "-"}</td>
-              <td style={{ padding: 10 }}>{bus.busBrand}</td>
+              <td style={{ padding: 10 }}>{bus.busBrandName}</td>
               <td
                 style={{
                   padding: 10,
