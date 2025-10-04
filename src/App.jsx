@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Outlet, Link, useLocation } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const location = useLocation();
+  const isAuthPage = ["/login", "/register"].includes(location.pathname);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(180deg, #0f0f17, #141422)",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      {/* Header con logo CIVA */}
+      <header
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: isAuthPage ? "center" : "space-between",
+          padding: "16px 32px",
+          borderBottom: "1px solid rgba(255,255,255,0.1)",
+          color: "#fff",
+          fontWeight: "bold",
+        }}
+      >
+        <span style={{ fontSize: "1.2rem", letterSpacing: "2px" }}>CIVA</span>
 
-export default App
+        {!isAuthPage && (
+          <nav style={{ display: "flex", gap: "16px" }}>
+            <Link style={{ color: "#fff", textDecoration: "none" }} to="/">
+              Home
+            </Link>
+            <Link style={{ color: "#fff", textDecoration: "none" }} to="/login">
+              Login
+            </Link>
+            <Link
+              style={{ color: "#fff", textDecoration: "none" }}
+              to="/register"
+            >
+              Register
+            </Link>
+          </nav>
+        )}
+      </header>
+
+      {/* Contenido centrado */}
+      <main
+        style={{
+          flex: 1,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "20px",
+        }}
+      >
+        <Outlet />
+      </main>
+    </div>
+  );
+}

@@ -2,7 +2,7 @@ export type Brand = { id: number; name: string };
 
 export type Bus = {
   id: number;
-  busNumber: number;        
+  busNumber: number;
   characteristic: string;
   plate: string;
   model: string;
@@ -10,14 +10,16 @@ export type Bus = {
   status: 'active' | 'inactive';
 };
 
-export type SignUpRequest = { username: string; password: string; email?: string };
+export type SignUpRequest = { username: string; password: string };
 export type SignInRequest = { username: string; password: string };
 export type AuthResponse = { token: string; tokenType?: string; expiresAt?: string };
 
 export type CreateBusRequest = {
-  busNumber: number;
+  busNumber: string;
   characteristic: string;
   plate: string;
   model: string;
   brandId: number;
+  // si creas el bus con estado desde el front:
+  // status?: 0 | 1;
 };
